@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 2beaf4cc163ab474cb2433fed7951c9f
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mosquitoPrefab: {fileID: 8914918323709798304, guid: 5111c5edd2e394927b0f71e47379cf7d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

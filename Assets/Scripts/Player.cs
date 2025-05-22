@@ -1,23 +1,28 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
-    public float moveSpeed = 15f;
-    private Rigidbody2D rb;
-    private float moveInput;
+    public float speed = 5f;
+    Rigidbody2D body;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizontal");
-    }
+        float moveX = 0;
 
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveX = -1;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            moveX = 1;
+        }
+
+        body.linearVelocity = new Vector2(moveX * speed, body.linearVelocity.y);
     }
 }
