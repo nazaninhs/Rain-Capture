@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // برای دسترسی به TextMeshPro
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,7 +22,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateScoreUI();
-        gameOverPanel.SetActive(false);
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
+        else
+            Debug.LogWarning("GameOverPanel is not assigned in the inspector!");
     }
 
     public void AddScore(int amount)
@@ -34,6 +38,14 @@ public class GameManager : MonoBehaviour
     public void LoseLife()
     {
         lives--;
+
+        // اعلام به HealthManager که یکی از قلب‌ها کم بشه
+        HealthManager healthManager = FindObjectOfType<HealthManager>();
+        if (healthManager != null)
+        {
+            healthManager.TakeDamage();
+        }
+
         if (lives <= 0)
         {
             GameOver();
@@ -43,8 +55,13 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         Debug.Log("Game Over");
-        gameOverPanel.SetActive(true);
-        Time.timeScale = 0f; // بازی رو متوقف کن
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
+        else
+            Debug.LogWarning("gameOverPanel is not assigned!");
+
+        Time.timeScale = 0f; // بازی رو متوقف می‌کنه
     }
 
     void UpdateScoreUI()

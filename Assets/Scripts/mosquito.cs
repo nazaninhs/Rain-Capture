@@ -10,6 +10,14 @@ public class MosquitoBug : MonoBehaviour
             {
                 GameManager.instance.LoseLife();
             }
+
+            // کم کردن قلب از HealthManager
+            var healthManager = FindObjectOfType<HealthManager>();
+            if (healthManager != null)
+            {
+                healthManager.TakeDamage();
+            }
+
             Destroy(gameObject);
         }
     }
@@ -23,6 +31,7 @@ public class MosquitoBug : MonoBehaviour
             {
                 GameManager.instance.AddScore(1);
             }
+
             Destroy(gameObject);
         }
         else if (col.tag == "Ground")
@@ -32,6 +41,14 @@ public class MosquitoBug : MonoBehaviour
             {
                 GameManager.instance.LoseLife();
             }
+
+            // کم کردن قلب از HealthManager
+            var healthManager = FindObjectOfType<HealthManager>();
+            if (healthManager != null)
+            {
+                healthManager.TakeDamage();
+            }
+
             Destroy(gameObject);
         }
     }
